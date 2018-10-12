@@ -9,18 +9,21 @@ const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000 ; 
 var io = socketIO(server);
 
-
 app.use(express.static(publicPath));
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) => {   
     console.log("New user /connected.")
 
-    socket.emit('newEmail', {
-        from: 'john@gmail.com',
-        text: "Something about the shit going on about the Convocation.",
-        createdAt: '10-10-2018'
-    }); 
+    socket.emit('newMessage', {
+        from: "Server",
+        to: "Client Worksta tion",
+        message: "Hi, This is suraj from Server side.",
+        createdAt:"12.10.2018, Friday"
+    });
 
+    socket.on('createMessage', (createMessage) => {
+        console.log("createMessage event is received from the client\n\n", createMessage);
+    });
     socket.on('disconnect', () => {
         console.log("User was /disconnected");
     });
