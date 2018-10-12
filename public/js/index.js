@@ -2,13 +2,13 @@ var socket = io();
                 socket.on('connect', function()  {
                     console.log("Connected to server");
 
-                    socket.emit('createMessage', {
-                        from: "client",
-                        message: "CreateMessage event sent from client to server."
-                    })
+                    // socket.emit('createMessage', {
+                    //     from: "client",
+                    //     message: "CreateMessage event sent from client to server."
+                    // })
 
                     socket.on('newMessage', function(newMessage) {
-                        console.log("NEWMessage from the Server", newMessage);
+                        console.log("newMessage from the Server", newMessage);
                     });
                 }); 
 

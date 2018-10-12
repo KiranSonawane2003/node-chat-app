@@ -12,17 +12,16 @@ var io = socketIO(server);
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {   
-    console.log("New user /connected.")
+    console.log("\n\nNew user /connected.")
 
-    socket.emit('newMessage', {
-        from: "Server",
-        to: "Client Worksta tion",
-        message: "Hi, This is suraj from Server side.",
-        createdAt:"12.10.2018, Friday"
-    });
+    socket.on('createMessage', (message) => {
+        console.log("createMessage event is received from the client\n\n", message);
 
-    socket.on('createMessage', (createMessage) => {
-        console.log("createMessage event is received from the client\n\n", createMessage);
+        io.emit('newMessage', {
+            from: message.from,
+            message: message.message,
+            createdAt: new Date().getTime()
+        });
     });
     socket.on('disconnect', () => {
         console.log("User was /disconnected");
