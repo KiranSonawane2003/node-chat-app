@@ -11,19 +11,6 @@ var socket = io();
                     jQuery('#messages').append(li);
                 });
                 
-                socket.on('disconnect', function() {
-                    console.log("Disconnected from server.");
-                });
-
-                // socket.emit('createMessage', 
-                // {
-                //     from: "Frank",
-                //     text: "Hi, This is Frank" 
-                // },
-                // function (data) {
-                //     console.log('Got it',data);
-                // });
-
                 jQuery('#message-form').on('submit', function(e) {
                     e.preventDefault();
 
@@ -33,4 +20,10 @@ var socket = io();
                     }, function () {
 
                     });
+
+                    $('#message-form')[0].reset();
+                });
+
+                socket.on('disconnect', function() {
+                    console.log("Disconnected from server.");
                 });

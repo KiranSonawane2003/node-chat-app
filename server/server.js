@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         callback('This is from server');
         // socket.broadcast.emit('newMessage', {
         //     from: message.from,
-        //     text: message.text,
+        //     text: message.message,
         //     createdAt: new Date().getTime()
         // });
 
