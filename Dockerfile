@@ -1,5 +1,5 @@
-FROM node:8
+FROM node:8-onbuild
 
 EXPOSE 5000
 
-CMD["node","server/server.js"]
+CMD["node","node server/server.js"]
