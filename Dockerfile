@@ -1,4 +1,4 @@
-FROM node:8-onbuild
+FROM node:8
 
 EXPOSE 5000
 
